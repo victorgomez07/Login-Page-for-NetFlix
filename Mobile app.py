@@ -23,6 +23,13 @@ def change_password_page(root):
     clear_window(root)
     root.configure(bg=APP_BG)
 
+    # Back Button
+    tk.Button(root, text="← Back",
+              bg=APP_BG, fg=ACCENT,
+              font=("Arial", 16, "bold"),
+              bd=0, activebackground=APP_BG,
+              command=lambda: login_page(root)).pack(anchor="w", padx=10, pady=10)
+
     tk.Label(root, text="Account",
              font=("Arial", 26, "bold"),
              fg=ACCENT, bg=APP_BG).pack(pady=10)
@@ -47,7 +54,6 @@ def change_password_page(root):
     new_pass = add_field("New Password")
     verify_pass = add_field("Verify New Password")
 
-    # Submit button
     def submit():
         if email.get() != verify_email.get():
             messagebox.showerror("Error", "Emails do not match.")
@@ -55,7 +61,6 @@ def change_password_page(root):
         if new_pass.get() != verify_pass.get():
             messagebox.showerror("Error", "Passwords do not match.")
             return
-
         messagebox.showinfo("Success", "Password updated successfully!")
 
     tk.Button(root, text="Submit",
@@ -66,7 +71,7 @@ def change_password_page(root):
 
 
 # ------------------------------------------------
-# Login Page (main → leads to Change Password)
+# Login Page
 # ------------------------------------------------
 def login_page(root):
     clear_window(root)
